@@ -171,7 +171,7 @@ def get_richest_phone_number(db_name: str):
     JOIN Rooms r1 ON r1.id = Client.room_id
     JOIN Hotels ON Hotels.id = r1.hotel_id
     WHERE r1.price = (
-    SELECT MAX(price) 
+    SELECT MAX(price)
     FROM Rooms r2
     WHERE r1.hotel_id = r2.hotel_id
         )
