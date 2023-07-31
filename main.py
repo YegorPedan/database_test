@@ -86,7 +86,7 @@ async def sort_hotels_by_minimal_price():
 
 async def list_of_clients_by_room_price():
     clients = await Client.all().prefetch_related("room__hotel").order_by("room__price")
-    print("List of client sorted by room price")
+    print("\nList of client sorted by room price")
     for client in clients:
         print(f"{client.full_name} {client.room.hotel.name} - {client.room.price}")
 
@@ -102,7 +102,7 @@ async def get_first_client():
 
 async def get_phone_expensive_phone_number():
     hotels = await Hotel.all()
-    print("The person, who use most expensive room: ")
+    print("\nThe person, who use most expensive room: ")
     for hotel in hotels:
         client = await Client.filter(room__hotel=hotel).order_by("-room__price")
         print(f"{client[0].phone_number}")
